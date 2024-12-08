@@ -1,0 +1,24 @@
+﻿product_id,product_name,product_price,product_description,product_image,product_size,product_stock
+1,Áo sơ mi họa tiết Nhật Bản,39.99,"Chiếc áo sơ mi có họa tiết hoa lá rực rỡ và sống động, với sự kết hợp của các màu sắc như vàng, xanh lam và đỏ. Thiết kế lịch sự nhưng vẫn thoải mái, phù hợp để mặc trong nhiều dịp khác nhau.",img/products/f1.jpg,L,18
+1,Áo sơ mi họa tiết Nhật Bản,39.99,"Chiếc áo sơ mi có họa tiết hoa lá rực rỡ và sống động, với sự kết hợp của các màu sắc như vàng, xanh lam và đỏ. Thiết kế lịch sự nhưng vẫn thoải mái, phù hợp để mặc trong nhiều dịp khác nhau.",img/products/f1.jpg,M,8
+1,Áo sơ mi họa tiết Nhật Bản,39.99,"Chiếc áo sơ mi có họa tiết hoa lá rực rỡ và sống động, với sự kết hợp của các màu sắc như vàng, xanh lam và đỏ. Thiết kế lịch sự nhưng vẫn thoải mái, phù hợp để mặc trong nhiều dịp khác nhau.",img/products/f1.jpg,XL,20
+2,Áo Sơ Mi Họa Tiết Hoa Lá Nhiệt Đới,49.99,"Áo sơ mi với họa tiết hoa lá màu xanh lá cây, cam và vàng tạo nên một thiết kế sống động và tươi mới. Phù hợp cho những ngày hè thoải mái.",img/products/f2.jpg,L,18
+2,Áo Sơ Mi Họa Tiết Hoa Lá Nhiệt Đới,49.99,"Áo sơ mi với họa tiết hoa lá màu xanh lá cây, cam và vàng tạo nên một thiết kế sống động và tươi mới. Phù hợp cho những ngày hè thoải mái.",img/products/f2.jpg,M,10
+2,Áo Sơ Mi Họa Tiết Hoa Lá Nhiệt Đới,49.99,"Áo sơ mi với họa tiết hoa lá màu xanh lá cây, cam và vàng tạo nên một thiết kế sống động và tươi mới. Phù hợp cho những ngày hè thoải mái.",img/products/f2.jpg,XL,15
+3,Áo Sơ Mi Hoa Nhiều Màu,54.99,"Chiếc áo sơ mi với họa tiết hoa lá đa sắc màu, mang đến vẻ ngoài nổi bật và tràn đầy sức sống. Phù hợp cho những ngày hè năng động.",img/products/f3.jpg,L,13
+3,Áo Sơ Mi Hoa Nhiều Màu,54.99,"Chiếc áo sơ mi với họa tiết hoa lá đa sắc màu, mang đến vẻ ngoài nổi bật và tràn đầy sức sống. Phù hợp cho những ngày hè năng động.",img/products/f3.jpg,M,10
+3,Áo Sơ Mi Hoa Nhiều Màu,54.99,"Chiếc áo sơ mi với họa tiết hoa lá đa sắc màu, mang đến vẻ ngoài nổi bật và tràn đầy sức sống. Phù hợp cho những ngày hè năng động.",img/products/f3.jpg,XL,12
+4,Áo Sơ Mi Họa Tiết Hoa Anh Đào,59.99,"Chiếc áo sơ mi có họa tiết hoa anh đào tinh tế trên nền trắng, mang đến vẻ ngoài thanh lịch và sang trọng. Thiết kế thoải mái và phù hợp cho nhiều dịp khác nhau.",img/products/f4.jpg,M,10
+5,Áo Sơ Mi Xanh Nhạt Cổ Trụ,39.99,"Chiếc áo sơ mi với thiết kế cổ trụ đơn giản, có một túi ngực. Chất liệu vải mềm mại và thoáng mát, phù hợp với nhiều dịp khác nhau.",img/products/n1.jpg,L,14
+5,Áo Sơ Mi Xanh Nhạt Cổ Trụ,39.99,"Chiếc áo sơ mi với thiết kế cổ trụ đơn giản, có một túi ngực. Chất liệu vải mềm mại và thoáng mát, phù hợp với nhiều dịp khác nhau.",img/products/n1.jpg,M,10
+6,Áo Sơ Mi Caro Xám Trắng,45.99,"Chiếc áo sơ mi với họa tiết caro nhỏ màu xám và trắng, mang phong cách thanh lịch và tinh tế. Chất liệu vải mềm mại và thoáng mát.",img/products/n2.jpg,L,17
+6,Áo Sơ Mi Caro Xám Trắng,45.99,"Chiếc áo sơ mi với họa tiết caro nhỏ màu xám và trắng, mang phong cách thanh lịch và tinh tế. Chất liệu vải mềm mại và thoáng mát.",img/products/n2.jpg,M,10
+7,Áo Sơ Mi Trắng Cơ Bản,29.99,"Chiếc áo sơ mi với thiết kế đơn giản, cổ trụ và cài cúc truyền thống. Chất liệu vải mềm mại và thoáng mát, phù hợp đa dạng hoàn cảnh.",img/products/n3.jpg,L,14
+7,Áo Sơ Mi Trắng Cơ Bản,29.99,"Chiếc áo sơ mi với thiết kế đơn giản, cổ trụ và cài cúc truyền thống. Chất liệu vải mềm mại và thoáng mát, phù hợp đa dạng hoàn cảnh.",img/products/n3.jpg,M,10
+8,Áo Sơ Mi Denim Xanh Nhạt,39.99,"Chiếc áo sơ mi với chất liệu denim mềm mịn và thoáng mát, thiết kế năng động và phong cách casual.",img/products/n5.jpg,M,10
+8,Áo Sơ Mi Denim Xanh Nhạt,39.99,"Chiếc áo sơ mi với chất liệu denim mềm mịn và thoáng mát, thiết kế năng động và phong cách casual.",img/products/n5.jpg,XL,17
+9,Áo Sơ Mi In Hình Họa Tiết Độc Đáo,59.99,"Chiếc áo sơ mi với họa tiết in ấn bắt mắt và độc đáo, mang đến phong cách năng động và phóng khoáng.",img/products/n4.jpg,M,10
+10,Quần Short Nam Sọc Xám Trắng,49.99,"Chiếc quần short nam với họa tiết sọc đơn giản, mang phong cách thanh lịch và casual. Kết hợp với chiếc thắt lưng dệt kim tạo nên vẻ ngoài tinh tế.",img/products/n6.jpg,M,10
+11,Áo Khoác Ngoài Kiểu Shacket Nâu Be,69.99,"Chiếc áo khoác mỏng với thiết kế đơn giản nhưng tiện dụng, chất liệu vải bông mềm mại và thoáng khí.",img/products/n7.jpg,M,10
+12,Áo Sơ Mi Vải Nhung Phối Màu,89.99,"Chiếc áo sơ mi với thiết kế cách điệu, chất liệu vải nhung mềm mại và màu sắc tương phản đầy ấn tượng.
+",img/products/f6.jpg,M,10

@@ -1,0 +1,30 @@
+<x-app-layout>
+    <div class="bill-details">
+        <h2>Chi tiết hóa đơn</h2>
+        <p><strong>ID Hóa Đơn:</strong> {{ $bill->id }}</p>
+        <p><strong>Tổng tiền:</strong> {{ $bill->total }}</p>
+        <p><strong>Giảm giá:</strong> {{ $bill->discount_amount }}</p>
+        <p><strong>Tổng sau giảm giá:</strong> {{ $bill->discount_total }}</p>
+
+        <div class="receiver-details">
+            <h3>Thông tin người nhận</h3>
+            @if ($bill->receiver)
+                <p><strong>Họ và tên:</strong> {{ $bill->receiver->fullname }}</p>
+                <p><strong>Số điện thoại:</strong> {{ $bill->receiver->phone }}</p>
+                <p><strong>Địa chỉ:</strong> {{ $bill->receiver->address }}</p>
+            @else
+                <p>Không có thông tin người nhận.</p>
+            @endif
+        </div>
+
+        <h3>Danh sách đơn hàng</h3>
+        @foreach ($bill->orders as $order)
+            <div class="order">
+                <p><strong>ID Đơn Hàng:</strong> {{ $order->id }}</p>
+                <p><strong>Sản phẩm:</strong> {{ $order->product->name ?? 'N/A' }}</p>
+                <p><strong>Số lượng:</strong> {{ $order->quantity }}</p>
+                <p><strong>Giá:</strong> {{ $order->product->price ?? 'N/A' }}</p> <!-- Hiển thị giá sản phẩm -->
+            </div>
+        @endforeach
+    </div>
+</x-app-layout>
