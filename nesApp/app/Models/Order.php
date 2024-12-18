@@ -24,4 +24,8 @@ class Order extends Model
     public function bill() {
         return $this->belongsTo(Bill::class);
     }
+    public function sizes() {
+        return $this->belongsTo(ProductSize::class,'product_id','product_id');
+
+    }
 }

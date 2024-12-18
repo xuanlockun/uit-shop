@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -17,7 +18,7 @@ use Illuminate\Http\Request;
 
 // Route::get('/', function () {return view('welcome');})->name('home');
 
-Route::get('/about',[PagesController::class,'about']);
+Route::get('/about',[PagesController::class,'about'])->name('about');
 Route::get('/products',action: [ProductsController::class,'index'])->name('products');
 Route::post('/products',[ProductsController::class,'store']);
 Route::get('/products/{id}',[ProductsController::class,'detail'])->name('products.detail');
@@ -59,13 +60,29 @@ Route::get('/clear', function () {
 });
 
 Route::post('/cat', [BillsController::class, 'cat'])->name('orders.cat');
-Route::get('/testing', [CartController::class, 'testCart'])->name('cart.test');
 
 Route::post('/purchase', [OrderController::class,'update'])->name('purchase');
-Route::get('/admin', [ProductsController::class,'admin_index'])->name('admin');
-Route::post('/admin', [ProductsController::class,'store'])->name('products.store');
-Route::put('/admin', [ProductsController::class,'update'])->name('products.update');
-Route::delete('/admin', [ProductsController::class, 'destroy'])->name('products.destroy');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/users', [AdminController::class,'user'])->name('admin.users');
+Route::get('/admin/coupons', [AdminController::class,'coupon'])->name('admin.coupons');
+Route::post('/admin/coupons', [CouponController::class,'store'])->name('coupons.store');
+Route::put('/coupons/{id}', [CouponController::class,'update'])->name('coupons.update');
+Route::delete('/coupons/{id}', [CouponController::class,'destroy'])->name('coupons.destroy');
+Route::get('/admin/orders', [AdminController::class,'order'])->name('admin.orders');
+Route::post('/admin/orders', [CouponController::class,'store'])->name('orders.store');
+Route::put('/orders/{id}', [OrderController::class,'update'])->name('orders.update');
+Route::delete('/orders/{id}', [CouponController::class,'destroy'])->name('orders.destroy');
+Route::post('/admin/bills', [CouponController::class,'store'])->name('bills.store');
+Route::put('/bills/{id}', [CouponController::class,'update'])->name('bills.update');
+Route::delete('/bills/{id}', [CouponController::class,'destroy'])->name('bills.destroy');
+
+
+
+
+// Route::post('/admin', [ProductsController::class,'store'])->name('products.store');
+// Route::put('/admin', [ProductsController::class,'update'])->name('products.update');
+// Route::delete('/admin', [ProductsController::class, 'destroy'])->name('products.destroy');
 Route::put('/pending/{id}', [OrderController::class,'pending'])->name('orders.pending');
 
 Route::get('/coupon/{code}', [CouponController::class, 'getCoupon']);
@@ -76,6 +93,6 @@ Route::get('/coupon-view', function () {
 Route::get('/uit', [ProductsController::class,'admin_index'])->name('uit');
 Route::get('/posts', [PostController::class, 'index'])->name('blog');
 Route::get('/posts/{id}', [PostController::class, 'detail'])->name('blog.detail');
-
+Route::get('/test2',[BillsController::class,'test2'])->name('test2');
 
 require __DIR__.'/auth.php';

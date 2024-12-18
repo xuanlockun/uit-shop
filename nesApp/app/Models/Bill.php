@@ -22,7 +22,7 @@ class Bill extends Model
         return $this->belongsTo(User::class);
     }
     public function orders() {
-        return $this->hasmany(Order::class);
+        return $this->hasmany(Order::class)->orderBy('status','asc');
     }
     public function receiver() {
         return $this->belongsTo(Receiver::class);

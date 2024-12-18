@@ -11,6 +11,10 @@ use App\Models\Receiver;
 
 class BillsController extends Controller
 {
+    public function test2() {
+        $bills = Bill::where('user_id',Auth::id())->with('orders.product.sizes')->get();
+        return view('test2',compact('bills'));
+    }
     public function index() {}
     public function store(Request $request)
     {
@@ -25,6 +29,7 @@ class BillsController extends Controller
     public function detail($billId)
     {
         $bill = Bill::where('id', $billId)->with('orders.product.sizes','receiver')->first();
+
         return view('bill.detail', compact('bill'));
     }
 

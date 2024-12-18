@@ -15,7 +15,6 @@
                             <h4>{{ $post->short }}</h4>
                         </div>
                     </a>
-                    <a href="#" class="cart-link"><i class="fas fa-shopping-cart cart"></i></a>
                 </div>
             @endforeach
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Receiver;
 use Illuminate\Support\Facades\Auth;
@@ -74,18 +75,18 @@ class CartController extends Controller
     {
         $cartItems = session('cart', []);
         // dd($cartItems);
-        return view('cart.test', compact('cartItems'));
+        return view('admin.index', compact('cartItems'));
     }
 
     public function index()
     {
         $cartItems = session('cart', []);
         if (!Auth::check()) {
-            // $cartItems = session('cart', []);
             return view('cart.guest', compact('cartItems'));
         }
-        // $cartItems = Cart::where('user_id', auth()->user()->id)->with('product')->get();
-        return view('cart.guest', compact('cartItems'));
+        $customer = Customer::where('user_id', Auth::id())->first();
+        $receivers = Receiver::where('user_id', Auth::id())->get();
+        return view('cart.guest', compact('cartItems','receivers','customer'));
     }
 
     public function update(Request $request, Cart $cart)

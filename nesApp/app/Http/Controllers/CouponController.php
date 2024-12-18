@@ -49,8 +49,16 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'code' => 'required|unique:coupons|max:255',
+            'discount' => 'required|numeric|min:0',
+            'status' => 'required|boolean',
+        ]);
+
+        Coupon::create($request->all());
+        return redirect()->route('admin.coupons')->with('success', 'Coupon created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -71,36 +79,45 @@ class CouponController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function update(Request $request, $id)
+{
+    $coupon = Coupon::findOrFail($id);
+    $coupon->code = $request->code;
+    $coupon->discount = $request->discount;
+    $coupon->status = $request->status;
+    $coupon->save();
+
+    return redirect()->route('admin.coupons')->with('success', 'Coupon updated successfully');
+}
+
+
+    public function destroy($id)
     {
-        //
+        $coupon = Coupon::findOrFail($id); 
+        $coupon->delete();
+        return redirect()->route('admin.coupons')->with('success', 'Coupon deleted successfully.');
     }
-    // public function apply(Request $request)
-    // {
-    //     $request->validate([
-    //         'code' => 'required|string|exists:coupons,code',
-    //     ]);
 
-    //     $coupon = Coupon::where('code', $request->code)->first();
+    public function bulkDelete(Request $request)
+{
+    $couponIds = $request->ids;
 
-    //     if ($coupon) {
-    //         if ($coupon->status === 'disabled') {
-    //             return response()->json(['success' => false, 'message' => 'This coupon is disabled.']);
-    //         }
-            
-    //         return response()->json(['success' => true, 'discount' => $coupon->discount]);
-    //     }
+    // Kiểm tra xem có coupon nào khớp với các ID gửi lên không
+    $coupons = Coupon::whereIn('id', $couponIds)->get();
 
-    //     return response()->json(['success' => false, 'message' => 'Invalid coupon code.']);
-    // }
+    if ($coupons->isEmpty()) {
+        return response()->json(['message' => 'No coupons found to delete.'], 404);
+    }
+
+    // Thực hiện xóa các coupon
+    Coupon::whereIn('id', $couponIds)->delete();
+
+    return response()->json(['success' => 'Coupons deleted successfully']);
+}
 
     public function applyCoupon(Request $request)
 {

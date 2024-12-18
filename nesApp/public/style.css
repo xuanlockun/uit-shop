@@ -867,3 +867,8 @@ tr:hover {
 .star.selected {
     color: gold;
 }
+
+footer {
+    display: flex !important; /* Dùng !important để ghi đè */
+}
+

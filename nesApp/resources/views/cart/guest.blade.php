@@ -39,13 +39,51 @@
                 <div id="result" class="mt-3"></div>
             </div>
 
+            @if (!isset($receivers) || $receivers->isEmpty())
             <div>
                 <br>
                 Tên người nhận <input type="text" class="rec-name"><br><br>
                 Số điện thoại <input type="text" class="rec-sdt"><br><br>
                 Địa chỉ <input type="text" class="rec-dc"><br><br>
-
             </div>
+        @else
+        <div>
+            <h3>Your Receivers</h3>
+            <form>
+                <!-- Customer as default receiver if it exists -->
+                @if (isset($customer->phone) && isset($customer->address) && $customer->phone !== '' && $customer->address !== '')
+                    <input style="width:10px;" type="radio" name="receiver" class="rec-radio" data-name="{{ $customer->fullname }}" data-phone="" data-address="">
+                    {{ $customer->fullname }} - (Default)
+                @elseif (!$customer->phone)
+                <a href="{{ route('dashboard') }}">Hãy cập nhật thông tin cá nhân</a>
+                @endif
+                <!-- Receivers List with radio buttons -->
+                <br>
+                @foreach ($receivers as $receiver)
+                        <input style="width:10px;" type="radio" name="receiver" class="rec-radio" data-name="{{ $receiver->fullname }}" data-phone="{{ $receiver->phone }}" data-address="{{ $receiver->address }}">{{ $receiver->fullname }} - {{ $receiver->address }} - {{ $receiver->phone }}
+                @endforeach
+            </form>
+        
+            <!-- Hidden fields to update with receiver info -->
+            <input type="text" class="rec-name" style="display: none;" placeholder="Tên người nhận"><br><br>
+            <input type="text" class="rec-sdt" style="display: none;" placeholder="Số điện thoại"><br><br>
+            <input type="text" class="rec-dc" style="display: none;" placeholder="Địa chỉ"><br><br>
+        </div>
+            <!-- Script to handle updating input fields based on radio selection -->
+            <script>
+                document.querySelectorAll('.rec-radio').forEach(function(radio) {
+                    radio.addEventListener('change', function() {
+                        // Set the values of input fields based on the selected receiver
+                        document.querySelector('.rec-name').value = radio.getAttribute('data-name');
+                        document.querySelector('.rec-sdt').value = radio.getAttribute('data-phone');
+                        document.querySelector('.rec-dc').value = radio.getAttribute('data-address');
+                    });
+                });
+            </script>
+        @endif
+        
+
+
         </div>
 
         <div id="subtotal">

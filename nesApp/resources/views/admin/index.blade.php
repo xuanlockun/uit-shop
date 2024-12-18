@@ -108,7 +108,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="elements-buttons-standard.html">
+                                        <a href="route('admin.users')">
                                             Khách hàng
                                         </a>
                                     </li>
@@ -118,12 +118,12 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="elements-icons.html">
+                                        <a href="{{ route('admin.orders') }}">
                                             Đơn hàng
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="elements-badges-labels.html">
+                                        <a href="{{ route('admin.coupons') }}">
                                             Khuyến mãi
                                         </a>
                                     </li>

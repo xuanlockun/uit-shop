@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bill;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Customer;
@@ -35,8 +36,10 @@ class CustomerController extends Controller
         }
         $user = $request->user();
         $customer = Customer::where('user_id', $request->user()->id)->first();
+        $bills = Bill::where('user_id',Auth::id())->get();
+        $receivers = Receiver::where('user_id', Auth::id())->get();
 
-        return view('dashboard', compact('customer','user'));
+        return view('dashboard', compact('customer','user','bills','receivers'));
     }
 
     public function store(Request $request)

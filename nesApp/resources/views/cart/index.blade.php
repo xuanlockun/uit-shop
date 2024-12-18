@@ -1,4 +1,5 @@
 <x-app-layout>
+    <h1>Logiiiiiiiiiiiiiiiii</h1>
     <section id="cart" class="section-p1">
         <table width="100%">
             <thead>
@@ -38,7 +39,6 @@
                 </form>
                 <div id="result" class="mt-3"></div>
             </div>
-
             <div>
                 <br>
                 Tên người nhận <input type="text" class="rec-name"><br><br>
