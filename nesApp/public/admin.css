@@ -115,3 +115,7 @@ table.table td a.delete {
 .modal .modal-footer {
     padding: 20px 30px;
 }
+
+.modal-backdrop {
+    display: none !important;
+  }

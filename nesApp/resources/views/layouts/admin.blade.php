@@ -109,12 +109,12 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="elements-buttons-standard.html">
+                                        <a href="{{ route('admin.users') }}">
                                             Khách hàng
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('uit') }}">
+                                        <a href="{{ route('admin.products') }}">
                                             Sản phẩm
                                         </a>
                                     </li>
@@ -135,17 +135,17 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="forms-validation.html">
                                     Viết Blog
                                 </a>
-                            </li>
-                            <li class="app-sidebar__heading">Báo cáo</li>
+                            </li> --}}
+                            {{-- <li class="app-sidebar__heading">Báo cáo</li>
                             <li>
                                 <a href="charts-chartjs.html">
                                     Test Báo cáo
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

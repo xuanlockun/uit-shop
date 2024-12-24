@@ -102,30 +102,12 @@ class CouponController extends Controller
         return redirect()->route('admin.coupons')->with('success', 'Coupon deleted successfully.');
     }
 
-    public function bulkDelete(Request $request)
-{
-    $couponIds = $request->ids;
-
-    // Kiểm tra xem có coupon nào khớp với các ID gửi lên không
-    $coupons = Coupon::whereIn('id', $couponIds)->get();
-
-    if ($coupons->isEmpty()) {
-        return response()->json(['message' => 'No coupons found to delete.'], 404);
-    }
-
-    // Thực hiện xóa các coupon
-    Coupon::whereIn('id', $couponIds)->delete();
-
-    return response()->json(['success' => 'Coupons deleted successfully']);
-}
 
     public function applyCoupon(Request $request)
 {
-    // Kiểm tra mã coupon có hợp lệ hay không
     $coupon = Coupon::where('code', $request->code)->first();
 
     if ($coupon) {
-        // Giả sử discount là số tiền cần giảm
         $discountAmount = $coupon->discount; 
         session(['discount' => $discountAmount]); // Lưu vào session
         return redirect()->back()->with('coupon_message', 'Coupon applied successfully!');

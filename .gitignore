@@ -1,0 +1,15 @@
+nesApp/node_modules
+nesApp/vendor
+nesApp/public/storage
+nesApp/storage/*.key
+nesApp/storage/logs
+nesApp/storage/framework/cache
+nesApp/storage/framework/sessions
+nesApp/storage/framework/testing
+nesApp/storage/framework/views
+nesApp/.env
+nesApp.phpunit.result.cache
+npm-debug.log*
+yarn-error.log*
+Homestead.json
+Homestead.yaml

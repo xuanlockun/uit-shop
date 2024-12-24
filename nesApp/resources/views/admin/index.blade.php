@@ -11,6 +11,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet">
     <style>
@@ -108,12 +109,12 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="route('admin.users')">
+                                        <a href="{{route('admin.users') }}">
                                             Khách hàng
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('uit') }}">
+                                        <a href="{{ route('admin.products') }}">
                                             Sản phẩm
                                         </a>
                                     </li>
@@ -134,7 +135,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="forms-validation.html">
                                     Viết Blog
                                 </a>
@@ -144,7 +145,7 @@
                                 <a href="charts-chartjs.html">
                                     Test Báo cáo
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -154,17 +155,17 @@
                     <div class="app-page-title">
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
-                                <div class="page-title-icon">
+                                {{-- <div class="page-title-icon">
                                     <i class="pe-7s-car icon-gradient bg-mean-fruit">
                                     </i>
-                                </div>
-                                <div>Analytics Dashboard
-                                    <div class="page-title-subheading">This is an example dashboard created using
+                                </div> --}}
+                                <div>Report
+                                    {{-- <div class="page-title-subheading">This is an example dashboard created using
                                         build-in elements and components.
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
-                            <div class="page-title-actions">
+                            {{-- <div class="page-title-actions">
                                 <button type="button" data-toggle="tooltip" title="Example Tooltip"
                                     data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
                                     <i class="fa fa-star"></i>
@@ -217,7 +218,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="row">
@@ -226,10 +227,10 @@
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
                                         <div class="widget-heading">Total Orders</div>
-                                        <div class="widget-subheading">Last year expenses</div>
+                                        <div class="widget-subheading">Count</div>
                                     </div>
                                     <div class="widget-content-right">
-                                        <div class="widget-numbers text-white"><span>1896</span></div>
+                                        <div class="widget-numbers text-white"><span>{{ $order }}</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -238,11 +239,11 @@
                             <div class="card mb-3 widget-content bg-arielle-smile">
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
-                                        <div class="widget-heading">Clients</div>
+                                        <div class="widget-heading">Doanh thu</div>
                                         <div class="widget-subheading">Total Clients Profit</div>
                                     </div>
                                     <div class="widget-content-right">
-                                        <div class="widget-numbers text-white"><span>$ 568</span></div>
+                                        <div class="widget-numbers text-white"><span>$ {{ $total }}</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -251,16 +252,16 @@
                             <div class="card mb-3 widget-content bg-grow-early">
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
-                                        <div class="widget-heading">Followers</div>
+                                        <div class="widget-heading">Khách</div>
                                         <div class="widget-subheading">People Interested</div>
                                     </div>
                                     <div class="widget-content-right">
-                                        <div class="widget-numbers text-white"><span>46%</span></div>
+                                        <div class="widget-numbers text-white"><span>{{ $cus }}</span></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
+                        {{-- <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
                             <div class="card mb-3 widget-content bg-premium-dark">
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
@@ -272,9 +273,59 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
-                    <div class="row">
+                    <div class="row" style="width:800px;height:800px;">
+                        <h1>Product Distribution in Orders</h1>
+                        <canvas id="productChart" ></canvas>
+                    
+                        <script>
+                            var ctx = document.getElementById('productChart').getContext('2d');
+                            var productChart = new Chart(ctx, {
+                                type: 'pie', // Using a pie chart
+                                data: {
+                                    labels: @json($labels), // Product names as labels
+                                    datasets: [{
+                                        label: 'Number of Orders',
+                                        data: @json($orderCounts), // Total number of orders for each product
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ], // Array of colors for each segment
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ], // Border colors for each segment
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            position: 'top',
+                                        },
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(tooltipItem) {
+                                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' orders';
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                    {{-- <div class="row">
                         <div class="col-md-12 col-lg-6">
                             <div class="mb-3 card">
                                 <div class="card-header-tab card-header-tab-animation card-header">
@@ -584,8 +635,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    </div> --}}
+                    {{-- <div class="row">
                         <div class="col-md-6 col-xl-4">
                             <div class="card mb-3 widget-content">
                                 <div class="widget-content-outer">
@@ -656,8 +707,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    </div> --}}
+                    {{-- <div class="row">
                         <div class="col-md-12">
                             <div class="main-card mb-3 card">
                                 <div class="card-header">Active Users
@@ -806,8 +857,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    </div> --}}
+                    {{-- <div class="row">
                         <div class="col-md-6 col-lg-3">
                             <div class="card-shadow-danger mb-3 widget-chart widget-chart2 text-left card">
                                 <div class="widget-content">
@@ -900,7 +951,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="app-wrapper-footer">
                     <div class="app-footer">
